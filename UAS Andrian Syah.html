@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+		<!-- Ini merupakan Syntax untuk Title Berjalan -->
+		<script language='JavaScript'>
+		var txt="Perhitungan Indeks Prestasi Kumulatif ";
+		var speed=100;
+		var refresh=null;
+		function tulisanbergrak() { document.title=txt;
+		txt=txt.substring(1,txt.length)+txt.charAt(0);
+		refresh=setTimeout("tulisanbergrak()",speed);}tulisanbergrak();
+		</script>
+
+  </head>
+  
+  <body background="https://iteba.ac.id/wp-content/uploads/2019/07/Gedung-ITEBA-2.jpg">
+	  <!-- Ini Merupakan Script Hitung IPK untuk Tombol hitung -->
+	  <script language="JavaScript">
+	function hitungip()
+		{
+			// Deklarasi Variable 
+			var quis = parseFloat(document.fform.iquis.value); 
+			var tugas = parseFloat(document.fform.itugas.value); 
+			var uts = parseFloat(document.fform.iuts.value);
+			var uas = parseFloat(document.fform.iuas.value);
+			var ip =" ";
+			var ket=" ";
+			var na = (0.10*quis)+(0.20*tugas)+(0.30*uts)+(0.40*uas);
+
+			// Untuk Validasi kolom yang kosong dan akan memunculkan dialog apabila tidak di isi
+			if (document.forms["fform"]["iquis"].value == "") {
+                alert("Nilai Quiz Tidak Boleh Kosong");
+                document.forms["fform"]["iquis"].focus();
+                return false;
+            }
+            if (document.forms["fform"]["itugas"].value == "") {
+                alert("Niilai Tugas Tidak Boleh Kosong");
+                document.forms["fform"]["itugas"].focus();
+                return false;
+			}
+			if (document.forms["fform"]["iuts"].value == "") {
+                alert("Nilai UTS Tidak Boleh Kosong");
+                document.forms["fform"]["iuts"].focus();
+                return false;
+			}
+			if (document.forms["fform"]["iuas"].value == "") {
+                alert("Nilai UAS Tidak Boleh Kosong");
+                document.forms["fform"]["iuas"].focus();
+                return false;
+			}
+
+			// Perhitungan Untuk menghitung Indeks Prestasi Kumulatif 
+			
+		if ((na > 80) && (na <=100)) {
+			ip ="A";
+			ket="Lulus dengan Sangat Baik"; }
+		else if ((na > 68) && (na <=80)) {
+			ip ="B";
+			ket="Lulus dengan Baik"; }
+		else if ((na > 55) && (na <=68)) {
+			ip ="C";
+			ket="Lulus dengan Cukup"; }
+		else if ((na > 38) && (na <=55)) {
+			ip ="D";
+			ket="Lulus dengan Kurang"; }
+		else {
+			ip ="E";
+			ket="Tidak Lulus"; }
+		document.fform.oip.value=ip;
+		document.fform.oket.value=ket;}
+	
+		// Ini Merupakan fungsi untuk Tombol simpan 
+		function simpan(){
+			var nama = document.fform.inama.value;
+			var nim = document.fform.inim.value;
+			var jurusan = document.fform.ijurusan.value;
+			var quis = parseFloat(document.fform.iquis.value); 
+			var tugas = parseFloat(document.fform.itugas.value); 
+			var uts = parseFloat(document.fform.iuts.value);
+			var uas = parseFloat(document.fform.iuas.value);
+			var ip =" ";
+			var ket=" ";
+			var na = (0.10*quis)+(0.20*tugas)+(0.30*uts)+(0.40*uas);
+			
+			// Perhitungan Untuk menghitung Indeks Prestasi Kumulatif 
+			
+		if ((na > 80) && (na <=100)) {
+			ip ="A";
+			ket="Lulus dengan Sangat Baik"; }
+		else if ((na > 68) && (na <=80)) {
+			ip ="B";
+			ket="Lulus dengan Baik"; }
+		else if ((na > 55) && (na <=68)) {
+			ip ="C";
+			ket="Lulus dengan Cukup"; }
+		else if ((na > 38) && (na <=55)) {
+			ip ="D";
+			ket="Lulus dengan Kurang"; }
+		else {
+			ip ="E";
+			ket="Tidak Lulus"; }
+		document.fform.oip.value=ip;
+		document.fform.oket.value=ket;
+
+		// Untuk Validasi kolom yang kosong dan akan memunculkan dialog apabila tidak di isi
+		
+            if (document.forms["fform"]["inama"].value == "") {
+                alert("Nama Tidak Boleh Kosong");
+                document.forms["fform"]["inama"].focus();
+                return false;
+            }
+            if (document.forms["fform"]["inim"].value == "") {
+                alert("Nim Tidak Boleh Kosong");
+                document.forms["fform"]["inim"].focus();
+                return false;
+			}
+			if (document.forms["fform"]["ijurusan"].value == "") {
+                alert("Jurusan Tidak Boleh Kosong");
+                document.forms["fform"]["ijurusan"].focus();
+                return false;
+			}
+
+		// ini merupakan syntax untuk menambah data pada tabel 
+			
+	 var tabel = document.getElementById("databel");
+       var baris = tabel.insertRow(1);
+       var kol1 = baris.insertCell(0);
+       var kol2 = baris.insertCell(1);
+       var kol3 = baris.insertCell(2);
+       var kol4 = baris.insertCell(3);
+	   var kol5 = baris.insertCell(4);
+	   var kol6 = baris.insertCell(5);
+	   var kol7 = baris.insertCell(6);
+	   var kol8 = baris.insertCell(7);
+	   var kol9 = baris.insertCell(8);
+               
+	   kol1.innerHTML = nama;
+	   kol2.innerHTML = nim;
+	   kol3.innerHTML = jurusan;
+	   kol4.innerHTML = quis;
+       kol5.innerHTML = tugas;
+	   kol6.innerHTML = uts;
+	   kol7.innerHTML = uas;
+	   kol8.innerHTML = ip;
+	   kol9.innerHTML = ket;
+		}
+
+		//Koding untuk Print Screen Section
+
+		function printDiv(elementId) {
+		var a = document.getElementById('printing-css').value;
+		var b = document.getElementById(elementId).innerHTML;
+		window.frames["print_frame"].document.title = document.title;
+		window.frames["print_frame"].document.body.innerHTML = '<style>' + a + '</style>' + b;
+		window.frames["print_frame"].window.focus();
+		window.frames["print_frame"].window.print();
+		}			
+	  </script>
+	  
+	 
+
+	<textarea id="printing-css" style="display:none;">.no-print{display:none}</textarea>
+	<iframe id="printing-frame" name="print_frame" src="about:blank" style="display:none;"></iframe>
+
+
+    <center><img src="https://i2.wp.com/iteba.ac.id/wp-content/uploads/2017/12/logo-iteba-stiker-2-1.png?fit=600%2C253&ssl=1" width="15%"></center>
+    <div  class="container" style="background-color: rgba(200, 235, 240, 0.897);" >
+		
+		<div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+			<center><h1>Selamat Datang</h1></center>
+            <h3><marquee>Ini Merupakan Project Ujian Akhir Semester : Andrian Syah (1922009) Program Studi : Teknik Komputer T.A. 2019</marquee></h3><hr></hr>
+     <form name="fform">
+      <div class="form-group">
+		  
+		<div class="form-row">
+		
+		<div class="form-group col-md-6">
+		<label for="exampleFormControlInput1">NAMA</label>
+		<input type="text" class="form-control" name="inama" id="exampleFormControlInput1" placeholder="Isi Nama Mahasiswa...">
+		</div>
+
+		<div class="form-group col-md-6">
+		<label for="exampleFormControlInput1">NIM</label>
+		<input type="number" class="form-control" name="inim" id="exampleFormControlInput1" placeholder="Isi NIM Mahasiswa...">
+		</div>
+	</div>
+
+		<div class="form-group">
+			<label for="jurusan">Program Studi</label>
+			<select id="ijurusan" class="form-control" name="ijurusan">
+				<option value="" disable selected>- Pilih Program Studi</option>
+				<option value="Teknik Komputer">Teknik Komputer</option>
+				<option value="Sistem Informasi">Sistem Informasi</option>
+				<option value="DKV">Desain Komunikasi Visual</option>
+				<option value="Manajemen Rekayasa">Manajemen Rekayasa</option>
+				<option value="Teknik Industri">Teknik Industri</option>
+				<option value="Matematika">Matematika</option>
+			</select>
+		</div>
+		<hr>
+		<center><H4>SILAHKAN INPUT NILAI DIBAWAH INI</H4></center> 
+	
+		<div class="form-group">
+		  
+		<div class="form-row">
+			
+			<div class="form-group col-md-3">
+			<label for="exampleFormControlInput1">NILAI TUGAS</label>
+			<input type="number" class="form-control" name="itugas" id="exampleFormControlInput1" placeholder="Input Nilai Tugas">
+			</div>
+	
+			<div class="form-group col-md-3">
+			<label for="exampleFormControlInput1">NILAI QUIZ</label>
+			<input type="number" class="form-control" name="iquis" id="exampleFormControlInput1" placeholder="Input Nilai Quiz">
+			</div>
+
+			<div class="form-group col-md-3">
+			<label for="exampleFormControlInput1">NILAI UTS</label>
+			<input type="number" class="form-control" name="iuts" id="exampleFormControlInput1" placeholder="Input Nilai UTS">
+			</div>
+
+			<div class="form-group col-md-3">
+			<label for="exampleFormControlInput1">NILAI UAS</label>
+			<input type="number" class="form-control" name="iuas" id="exampleFormControlInput1" placeholder="Input Nilai UAS">
+			</div>
+			
+		</div>
+		<div class="alert alert-warning">
+			<div class="panel-heading">
+			  <b>Keterangan : </b>
+			</div>
+			<div class="panel-body">
+			  <p>Nilai A : 80 - 100  | Nilai B : 68 - 80 | Nilai C : 55 - 68 
+				| Nilai D : 38 - 55 | Nilai E : 0  - 38
+				<br>
+				Semua Nilai diakumulasikan Menggunakan Rumus Perhitungan IPK : <br>
+				(10%*quis)+(20%*tugas)+(30%*uts)+(40%*uas)
+			</div>
+		</div>
+			<div class="form-group">
+				<center>
+					<button type="button" onClick='hitungip()' class="btn btn-danger">Hitung</button>
+					<button type="reset" class="btn btn-danger">Batal</button></center>
+			</div>
+		</div>
+	
+</div>
+		   <tr>
+<td width="100%" colspan="10" bgcolor="#00DCFF"><p Align="center" >
+</tr> <tr>
+<td width="100%" colspan="10" align="center" bgcolor="#FF000">
+<hr>
+<h5><center>INDEKS PRESTASI KUMULATIF</center></h5>
+<div class="form-group">
+		  
+	<div class="form-row">
+
+<div class="form-group col-md-2">
+	
+	<label for="exampleFormControlInput1"></label>
+	<input type="text" class="form-control" name="oip" style="text-align: center;" id="exampleFormControlInput1" disabled placeholder="Indeks">
+	</div>
+
+	<div class="form-group col-md-10">
+			<label for="exampleFormControlInput1"></label>
+			<input type="text" class="form-control" name="oket" style="text-align: center;" id="exampleFormControlInput1" disabled placeholder="Keterangan">
+			</div>
+
+		</center></div><hr>
+		<div class="form-group">
+		   </td>
+	 </tr>
+ <center> 
+	<button type="location.reload();" class="btn btn-info">Refresh</button> 
+	<button type="button" onClick='simpan()' class="btn btn-primary">Simpan Data Pada Tabel</button>
+	<button type="button" value="Print" class="btn btn-primary" onclick="printDiv('print-area-2')" />Print</button>
+</center>
+	<hr>
+	  </div>
+	  <div id="print-area-2" class="print-area">
+		<center><h5>TABEL NILAI MAHASISWA</h5></center>
+        <table class="table table-striped " id="databel" style="background-color: #71ff84af;" >
+			<thead>
+            <tr>
+					<th scope="col">NAMA</th>
+					<th scope="col">NIM</th>
+					<th scope="col">JURUSAN</th>
+					<th scope="col">QUIZ</th>
+					<th scope="col">TUGAS</th>
+					<th scope="col">UTS</th>
+					<th scope="col">UAS</th>
+					<th scope="col">IPK</th>
+					<th scope="col">Keterangan</th>
+            </tr>
+		</thead>
+	  </table>  
+	  </div>
+  </form>
+	  </div>      
+	</div>    
+	  <div class="col-md-2"></div>
+	</div>
+  </div>
+   </body>
+</html>
