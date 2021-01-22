@@ -8,7 +8,7 @@
 		<!-- Ini merupakan Syntax untuk Title Berjalan -->
 		<script language='JavaScript'>
 		var txt="Perhitungan Indeks Prestasi Kumulatif ";
-		var speed=100;
+		var speed=250;
 		var refresh=null;
 		function tulisanbergrak() { document.title=txt;
 		txt=txt.substring(1,txt.length)+txt.charAt(0);
@@ -78,6 +78,7 @@
 			var nama = document.fform.inama.value;
 			var nim = document.fform.inim.value;
 			var jurusan = document.fform.ijurusan.value;
+			var angkatan = document.fform.iangkatan.value;
 			var quis = parseFloat(document.fform.iquis.value); 
 			var tugas = parseFloat(document.fform.itugas.value); 
 			var uts = parseFloat(document.fform.iuts.value);
@@ -123,6 +124,11 @@
                 document.forms["fform"]["ijurusan"].focus();
                 return false;
 			}
+			if (document.forms["fform"]["iangkatan"].value == "") {
+                alert("Tahun Angkatan Tidak Boleh Kosong");
+                document.forms["fform"]["iangkatan"].focus();
+                return false;
+			}
 
 		// ini merupakan syntax untuk menambah data pada tabel 
 			
@@ -137,16 +143,18 @@
 	   var kol7 = baris.insertCell(6);
 	   var kol8 = baris.insertCell(7);
 	   var kol9 = baris.insertCell(8);
+	   var kol10 = baris.insertCell(9);
                
 	   kol1.innerHTML = nama;
 	   kol2.innerHTML = nim;
 	   kol3.innerHTML = jurusan;
-	   kol4.innerHTML = quis;
-       kol5.innerHTML = tugas;
-	   kol6.innerHTML = uts;
-	   kol7.innerHTML = uas;
-	   kol8.innerHTML = ip;
-	   kol9.innerHTML = ket;
+	   kol4.innerHTML = angkatan;
+	   kol5.innerHTML = quis;
+       kol6.innerHTML = tugas;
+	   kol7.innerHTML = uts;
+	   kol8.innerHTML = uas;
+	   kol9.innerHTML = ip;
+	   kol10.innerHTML = ket;
 		}
 
 		//Koding untuk Print Screen Section
@@ -190,8 +198,9 @@
 		<input type="number" class="form-control" name="inim" id="exampleFormControlInput1" placeholder="Isi NIM Mahasiswa...">
 		</div>
 	</div>
-
-		<div class="form-group">
+<div class=form-group>
+		<div class="form-row">
+			<div class="form-group col-md-7">
 			<label for="jurusan">Program Studi</label>
 			<select id="ijurusan" class="form-control" name="ijurusan">
 				<option value="" disable selected>- Pilih Program Studi</option>
@@ -203,6 +212,18 @@
 				<option value="Matematika">Matematika</option>
 			</select>
 		</div>
+		<div class="form-group col-md-5">
+			<label for="angkatan">Angkatan</label>
+			<select id="iangkatan" class="form-control" name="iangkatan">
+				<option value="" disable selected>- Pilih Tahun Angkatan</option>
+				<option value="2020">2020</option>
+				<option value="2019">2019</option>
+				<option value="2018">2018</option>
+				
+			</select>
+		</div>
+	</div>
+</div>
 		<hr>
 		<center><H4>SILAHKAN INPUT NILAI DIBAWAH INI</H4></center> 
 	
@@ -291,12 +312,13 @@
 					<th scope="col">NAMA</th>
 					<th scope="col">NIM</th>
 					<th scope="col">JURUSAN</th>
+					<th scope="col">ANGKATAN</th>
 					<th scope="col">QUIZ</th>
 					<th scope="col">TUGAS</th>
 					<th scope="col">UTS</th>
 					<th scope="col">UAS</th>
 					<th scope="col">IPK</th>
-					<th scope="col">Keterangan</th>
+					<th scope="col">Ket</th>
             </tr>
 		</thead>
 	  </table>  
@@ -304,7 +326,9 @@
   </form>
 	  </div>      
 	</div>    
-	  <div class="col-md-2"></div>
+	  <div class="col-md-2">
+
+	  </div>
 	</div>
   </div>
    </body>
